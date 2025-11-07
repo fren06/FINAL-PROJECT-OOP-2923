@@ -1,0 +1,419 @@
+/* search.css — Teal Green & Lemon Chiffon Theme - Layout Preserved */
+
+/* ===== Theme (kept similar to style.css) ===== */
+:root{
+  --teal-green: #3DBD7A;
+  --lemon-chiffon: #FFFACD;
+  --light-teal: #E8F5E9;
+  --dark-teal: #2E8B57;
+  --bg: var(--lemon-chiffon);
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: var(--teal-green);
+  --border: #d1e7dd;
+  --radius: 10px;
+  --pad: 14px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  padding:0; /* keep search top spacing controlled by search container */
+}
+
+/* ===== HEADER / NAVBAR (fixed to perfectly match home.html) - STATIC CIRCLE BUTTON ===== */
+header {
+  background: transparent; /* no white block behind */
+  position: relative;
+  width: 100%;
+  margin-top: 16px; /* spacing from top like home */
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--teal-green);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px rgba(61, 189, 122, 0.08);
+}
+
+.navbar .logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 18px;
+}
+
+.navbar .nav-link {
+  text-decoration: none;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+}
+
+.navbar .nav-link:hover {
+  color: white;
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.1);
+}
+
+/* 🎯 STATIC CIRCLE BUTTON - No animations */
+.navbar .nav-link.active {
+  color: var(--teal-green);
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+  position: relative;
+}
+
+.navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 27px;
+  background: linear-gradient(45deg, #FFD700, #FFEC8B);
+  z-index: -1;
+}
+
+.navbar .nav-link.active:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.5);
+}
+
+
+/* ===== MAIN / SEARCH CONTAINER ===== */
+main{
+  max-width:1100px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+/* centered search container - REDUCED MARGIN */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 20px; /* REDUCED from 80px auto 24px */
+  gap: 12px;
+  transition: all 0.45s ease;
+}
+
+.search-container.top {
+  margin: 18px auto 18px;
+  justify-content: flex-start; /* align left-ish under header when moved up */
+}
+
+/* search input & button style (kept visually consistent with style.css search inputs) */
+#query {
+  width: 60%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow .18s, border-color .18s;
+}
+
+#query:focus { box-shadow: 0 0 0 4px rgba(61, 189, 122, 0.06); border-color: var(--accent); }
+
+#searchBtn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(61, 189, 122, 0.12);
+}
+#searchBtn:hover { transform: translateY(-1px); }
+
+/* ===== BOOK GRID & CARD (match style.css EXACTLY) ===== */
+
+/* base grid (we will override for topSellers on home, but keep consistent here) */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 per row to match home layout */
+  gap: 18px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto; /* CHANGED from 24px auto to 0 auto */
+}
+
+/* Card: fixed, consistent size (copied from style.css) */
+.book-card {
+  position: relative;       /* for bookmark absolute pos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 360px;        /* same height for all cards */
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  overflow: hidden;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(15,23,42,0.08);
+}
+
+/* Bookmark button (top-right) exactly like style.css */
+.bookmark-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--accent);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+  transition: transform 0.14s, background 0.14s, color 0.14s;
+}
+
+.bookmark-btn:hover {
+  transform: scale(1.08);
+}
+
+/* When bookmarked (filled style) */
+.bookmark-btn.bookmarked {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Fill the SVG path when bookmarked */
+.bookmark-btn.bookmarked svg path {
+  fill: currentColor;
+  stroke: none;
+}
+
+
+/* Cover area: same balanced rectangle as style.css */
+.cover-wrap {
+  width: 72%;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  margin-top: 8px;
+}
+.cover-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title & author exactly like style.css */
+.book-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 0 6px;
+  color: #0f172a;
+  text-align: center;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.book-card p.author {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* Mark as Read button sits at bottom area (use margin-top: auto) and matches style.css */
+.read-btn {
+  margin-top: auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(61, 189, 122, 0.12);
+  transition: transform 0.12s, background 0.12s;
+}
+.read-btn:hover { transform: translateY(-3px); background: var(--dark-teal); }
+.read-btn.read { background: #10b981; }
+
+/* ===== Responsive fallbacks (copy from style.css) ===== */
+@media (max-width: 1100px) {
+  .book-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+@media (max-width: 900px) {
+  .book-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .book-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .book-card { min-height: 320px; }
+  .cover-wrap { width: 78%; }
+}
+
+/* Small utility: no-results */
+.no-results {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+/* ===== Fixed centered search behaviour ===== */
+
+/* Container that centers the search box vertically on first load */
+.search-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically inside min-height */
+  min-height: 200px; /* REDUCED from calc(100vh - 140px) */
+  gap: 12px;
+  transition: all 0.45s ease;
+  padding: 0 16px;
+}
+
+/* When searching, move the container up but keep it centered horizontally */
+.search-container.top {
+  min-height: auto;
+  margin: 18px auto 12px;     /* small gap from header, centered by auto margins */
+  justify-content: center;    /* keep centered horizontally */
+  align-items: center;        /* keep aligned center vertically (small height) */
+  padding-top: 4px;
+}
+
+/* The inner search box: keep a constrained width so it doesn't hug left */
+.search-box, /* if you used .search-box */
+.search-container > input,
+.search-container > .search-box,
+.search-container > form {
+  width: 100%;
+  max-width: 880px;           /* controls how wide the search area grows */
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Search input (large and centered) */
+#query {
+  flex: 1 1 60%;
+  max-width: 720px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow .18s, border-color .18s;
+  margin: 0;
+}
+
+/* Search button stays to the right of the input, centered together */
+#searchBtn {
+  flex: 0 0 auto;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(61, 189, 122, 0.12);
+}
+
+/* Small responsive tweak — on small screens the input becomes full width and stacked */
+@media (max-width: 720px) {
+  .search-container {
+    min-height: auto; /* REMOVED large min-height on mobile */
+    margin: 20px auto; /* REDUCED margin */
+    padding: 0 12px;
+  }
+  .search-box, #query, #searchBtn {
+    width: 100%;
+  }
+  .search-box { flex-direction: column; gap: 8px; align-items: stretch; }
+  #query { max-width: 100%; }
+  #searchBtn { width: 100%; }
+  
+  /* Responsive navbar adjustments */
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .navbar nav {
+    gap: 12px;
+  }
+  
+  .navbar .nav-link {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== POPULAR SECTION STYLES - MOVED CLOSER ===== */
+.popular-section {
+  max-width: 1100px;
+  margin: 0 auto 20px; /* REDUCED bottom margin */
+  padding: 0 16px;
+}
+
+.popular-section h2 {
+  color: var(--dark-teal);
+  font-size: 1.5rem;
+  margin-bottom: 15px; /* REDUCED margin */
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Hide popular section when searching */
+.popular-section.hidden {
+  display: none;
+}
+
+/* Hide results initially */
+#results {
+  display: none;
+}
+
+#results:not(.hidden) {
+  display: grid;
+}

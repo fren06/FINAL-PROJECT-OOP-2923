@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Details | KUNIYAKINO</title>
+  <link rel="stylesheet" href="book.css" />
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <header>
+    <div class="navbar">
+      <div class="logo">KUNIYAKINO</div>
+      <nav>
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="bookmark.html" class="nav-link">Bookmarks</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ Book box -->
+  <div class="book-container">
+    <button class="close-btn" id="closeBtn">&times;</button>
+
+    <div class="cover-wrap">
+      <img id="book-cover" src="" alt="Book Cover" />
+    </div>
+
+    <div class="book-info">
+      <h1 id="book-title">Book Title</h1>
+      <p class="author" id="book-author"><strong>Author Name</strong></p>
+      <p><strong>Genre:</strong> <span id="book-genre"></span></p>
+      <p><strong>Year:</strong> <span id="book-year"></span></p>
+      <p><strong>Editions:</strong> <span id="book-editions"></span></p>
+      <p><strong>E-book:</strong> <span id="book-ebook"></span></p> <!-- ✅ Added e-book info -->
+
+      <!-- ✅ Review section -->
+      <label for="book-review" class="review-label"><strong>Review:</strong></label>
+      <textarea id="book-review" placeholder="Write your review here..."></textarea>
+      <button id="saveReviewBtn">Save</button>
+    </div>
+  </div>
+
+  <!-- ✅ Action buttons -->
+  <div class="book-actions">
+    <button id="bookmarkBtn">Bookmark</button>
+    <button id="markReadBtn">Mark as Read</button>
+  </div>
+
+  <script src="book.js"></script>
+</body>
+</html>

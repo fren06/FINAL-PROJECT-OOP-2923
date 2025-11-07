@@ -1,0 +1,635 @@
+/* bookmark.css - Teal Green & Lemon Chiffon Theme - Layout Preserved */
+:root {
+  --teal-green: #3DBD7A;
+  --lemon-chiffon: #FFFACD;
+  --light-teal: #E8F5E9;
+  --dark-teal: #2E8B57;
+  --bg: var(--lemon-chiffon);
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: var(--teal-green);
+  --border: #d1e7dd;
+  --radius: 10px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body { 
+  background: var(--bg); 
+  color: #0f172a; 
+  margin: 0; 
+  padding: 24px; 
+}
+
+/* 🚨 FIXED HEADER STYLING TO MATCH OTHER PAGES 🚨 - UPDATED TO CIRCULAR BUTTONS */
+header { 
+  max-width: 1100px; 
+  margin: 0 auto 18px; 
+}
+
+.navbar { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: var(--teal-green); 
+  padding: 12px 24px; 
+  border-radius: var(--radius); 
+  box-shadow: 0 4px 10px rgba(61, 189, 122, 0.08); 
+  border: 1px solid var(--border); 
+  margin-bottom: 20px; /* Added to match other pages */
+}
+
+.navbar .logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 18px;
+}
+
+.navbar .nav-link {
+  text-decoration: none;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 10px 20px; /* 🚨 ADDED PADDING */
+  border-radius: 25px; /* 🚨 ADDED BORDER-RADIUS */
+  position: relative;
+}
+
+.navbar .nav-link:hover {
+  color: white;
+  transform: translateY(-2px); /* 🚨 CHANGED FROM -1px TO -2px */
+  background: rgba(255,255,255,0.1); /* 🚨 ADDED BACKGROUND ON HOVER */
+}
+
+/* 🎯 STATIC CIRCLE BUTTON - No animations */
+.navbar .nav-link.active {
+  color: var(--teal-green);
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+  position: relative;
+}
+
+.navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 27px;
+  background: linear-gradient(45deg, #FFD700, #FFEC8B);
+  z-index: -1;
+}
+
+.navbar .nav-link.active:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.5);
+}
+
+.logo { 
+  color: white; 
+  font-weight: 700; 
+}
+
+.container { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 0 12px; 
+  position: relative;
+}
+
+.page-title { 
+  font-size: 1.25rem; 
+  margin: 10px 0 18px; 
+  font-weight: 700; 
+  color: #0f172a; 
+}
+
+/* list */
+.bookmarks-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  position: relative;
+}
+
+/* 🚨 BOOKMARK ROW WITH MORE EXTERNAL SPACE 🚨 */
+.bookmark-row {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.04);
+  transition: all 0.3s ease;
+  overflow: visible !important;
+  margin-right: 140px !important; /* 🚨 INCREASED FROM 100px TO 140px 🚨 */
+  width: calc(100% - 140px) !important; /* 🚨 INCREASED FROM 100px TO 140px 🚨 */
+}
+
+.bookmark-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15,23,42,0.1);
+}
+
+/* left: arrow toggle */
+.toggle-btn {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 8px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggle-btn .arrow { 
+  font-size: 18px; 
+  color: var(--muted); 
+}
+
+/* when expanded rotate arrow */
+.bookmark-row.expanded .toggle-btn { 
+  transform: rotate(180deg); 
+}
+
+/* cover image container */
+.row-cover {
+  width: 72px;
+  height: 108px;
+  overflow: hidden;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* info */
+.row-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.row-title { 
+  font-size: 1.02rem; 
+  font-weight: 700; 
+  margin: 0; 
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-author { 
+  font-size: 0.92rem; 
+  color: var(--muted); 
+  margin: 4px 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 🚨 EXTERNAL REMOVE BUTTON - POSITIONED FURTHER RIGHT 🚨 */
+.row-actions {
+  position: absolute !important;
+  right: -120px !important; /* 🚨 INCREASED FROM -90px TO -120px 🚨 */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  z-index: 1000 !important;
+}
+
+.remove-btn {
+  background: #ef4444 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+  min-width: 80px !important;
+}
+
+.remove-btn:hover { 
+  background: #dc2626 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* expanded content */
+.expanded-content {
+  margin-top: 12px;
+  display: none;
+  width: 100%;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease 0.2s;
+}
+
+.bookmark-row.expanded .expanded-content { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.bookmark-row.expanded .expanded-content.content-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* expanded layout */
+.expanded-top {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.bookmark-row.expanded .row-cover {
+  width: 280px;
+  height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.15);
+  flex-shrink: 0;
+}
+
+.expanded-details { 
+  flex: 1;
+  min-width: 0;
+}
+
+/* Book metadata grid */
+.book-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-item strong {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+/* review box */
+.review-label { 
+  font-weight: 600; 
+  margin: 16px 0 6px; 
+  display: block;
+  color: #0f172a;
+}
+
+.review-area { 
+  width: 100%; 
+  min-height: 120px; 
+  resize: vertical; 
+  padding: 12px; 
+  border-radius: 8px; 
+  border: 1px solid var(--border); 
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: border-color 0.2s ease;
+}
+
+.review-area:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(61, 189, 122, 0.1);
+}
+
+/* Review actions */
+.review-actions { 
+  display: flex; 
+  gap: 8px; 
+  margin-top: 12px; 
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.save-btn, .delete-review-btn, .open-book-btn {
+  padding: 8px 12px; 
+  border-radius: 8px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.save-btn { 
+  background: var(--accent); 
+  color: #fff; 
+}
+
+.save-btn:hover { 
+  background: var(--dark-teal); 
+  transform: translateY(-1px);
+}
+
+.delete-review-btn { 
+  background: #ef4444; 
+  color: #fff; 
+}
+
+.delete-review-btn:hover { 
+  background: #dc2626; 
+  transform: translateY(-1px);
+}
+
+.open-book-btn { 
+  background: #10b981; 
+  color: #fff; 
+}
+
+.open-book-btn:hover { 
+  background: #0d966c; 
+  transform: translateY(-1px);
+}
+
+/* Loading states */
+.loading, .error-message {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  color: #dc2626;
+}
+
+.retry-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.retry-btn:hover {
+  background: var(--dark-teal);
+}
+
+/* Button disabled states */
+.remove-btn:disabled,
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Expanded state */
+.bookmark-row.expanded {
+  background: #fafbff;
+  border-color: var(--accent);
+  padding-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bookmark-row.expanded .row-cover {
+    width: 200px;
+    height: 300px;
+  }
+  
+  .book-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .bookmark-row { 
+    flex-direction: column; 
+    align-items: stretch;
+    gap: 16px;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  .row-actions {
+    position: static !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    align-items: flex-start;
+    margin-top: 12px;
+  }
+  
+  .expanded-top { 
+    flex-direction: column; 
+  }
+  
+  .bookmark-row.expanded .row-cover {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  
+  .review-actions {
+    flex-direction: column;
+  }
+  
+  .review-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .navbar nav {
+    gap: 12px;
+  }
+  
+  body {
+    padding: 16px;
+  }
+  
+  .bookmark-row.expanded .row-cover {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+/* No bookmarks message */
+.no-bookmarks {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 40px 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+/* Add to bookmark.css - Mark as Read button styles */
+
+/* Review actions - updated for new button */
+.review-actions { 
+  display: flex; 
+  gap: 8px; 
+  margin-top: 12px; 
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.save-btn, .delete-review-btn, .open-book-btn, .read-btn {
+  padding: 8px 12px; 
+  border-radius: 8px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.save-btn { 
+  background: var(--accent); 
+  color: #fff; 
+}
+
+.save-btn:hover { 
+  background: var(--dark-teal); 
+  transform: translateY(-1px);
+}
+
+.delete-review-btn { 
+  background: #ef4444; 
+  color: #fff; 
+}
+
+.delete-review-btn:hover { 
+  background: #dc2626; 
+  transform: translateY(-1px);
+}
+
+.open-book-btn { 
+  background: #10b981; 
+  color: #fff; 
+}
+
+.open-book-btn:hover { 
+  background: #0d966c; 
+  transform: translateY(-1px);
+}
+
+/* Mark as Read button styles */
+.read-btn {
+  background: #8b5cf6 !important; /* Purple color */
+  color: #fff !important;
+}
+
+.read-btn:hover {
+  background: #7c3aed !important; /* Darker purple on hover */
+  transform: translateY(-1px);
+}
+
+/* Read state - when book is marked as read */
+.read-btn.read {
+  background: #10b981 !important; /* Green color when read */
+  color: #fff !important;
+}
+
+.read-btn.read:hover {
+  background: #0d966c !important; /* Darker green on hover */
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 700px) {
+  .review-actions {
+    flex-direction: column;
+  }
+  
+  .review-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-actions button {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+}

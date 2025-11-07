@@ -1,0 +1,21 @@
+{
+  "name": "reading-electron-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^38.6.0",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "packager": "^0.0.4"
+  }
+}

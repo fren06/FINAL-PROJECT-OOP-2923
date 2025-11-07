@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search | KUNIYAKINO</title>
+  <link rel="stylesheet" href="search.css" />
+</head>
+<body>
+  <!-- 🌐 NAVBAR -->
+  <header>
+    <div class="navbar">
+      <div class="logo">KUNIYAKINO</div>
+      <nav>
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link active">Search</a>
+        <a href="bookmark.html" class="nav-link">Bookmark</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🔍 SEARCH AREA -->
+  <main>
+    <div class="search-container">
+      <input type="text" id="query" placeholder="Search for books or authors..." />
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- 📚 POPULAR BOOKS SUGGESTION -->
+    <div id="popular-section" class="popular-section">
+      <h2>Popular Suggestion</h2>
+      <div id="popular-books" class="book-grid"></div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="results" class="book-grid"></div>
+  </main>
+
+  <script src="search.js"></script>
+</body>
+</html>

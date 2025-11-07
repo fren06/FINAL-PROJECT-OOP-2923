@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | KUNIYAKINO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🌐 NAVBAR / HEADER -->
+  <header>
+    <div class="navbar">
+      <div class="logo">KUNIYAKINO</div>
+      <nav>
+        <a href="home.html" class="nav-link active">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="bookmark.html" class="nav-link">Bookmark</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 📖 MAIN CONTENT -->
+  <main class="main-content">
+    <!-- 🎯 GENRE NAVIGATION BAR -->
+    <section class="section">
+      <h2 class="section-title">Browse by Genre</h2>
+      <div class="genre-nav" id="genreNav">
+        <button class="genre-btn active" data-target="top">Top</button>
+        <button class="genre-btn" data-target="fiction">Fiction</button>
+        <button class="genre-btn" data-target="fantasy">Fantasy</button>
+        <button class="genre-btn" data-target="scienceFiction">Science Fiction</button>
+        <button class="genre-btn" data-target="biographies">Biographies</button>
+        <button class="genre-btn" data-target="romance">Romance</button>
+        <button class="genre-btn" data-target="childrens">Children's</button>
+        <button class="genre-btn" data-target="history">History</button>
+        <button class="genre-btn" data-target="religion">Religion</button>
+      </div>
+    </section>
+
+    <!-- 🏆 TOP COLLECTIONS (Hidden by default, shown when Top button is clicked) -->
+    <section class="section genre-section" id="top">
+      <!-- 🔥 Top Sellers -->
+      <section class="subsection">
+        <h2 class="section-title">🔥 Top Sellers</h2>
+        <div id="topSellers" class="book-grid"></div>
+      </section>
+
+      <!-- 🌟 All-Time Best Sellers -->
+      <section class="subsection">
+        <h2 class="section-title">🌟 All-Time Best Seller</h2>
+        <div id="topCollections" class="book-grid"></div>
+      </section>
+    </section>
+
+    <!-- 📖 Fiction -->
+    <section class="section genre-section" id="fiction">
+      <h2 class="section-title">📖 Fiction</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 🧙‍♂️ Fantasy -->
+    <section class="section genre-section" id="fantasy">
+      <h2 class="section-title">🧙‍♂️ Fantasy</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 🚀 Science Fiction -->
+    <section class="section genre-section" id="scienceFiction">
+      <h2 class="section-title">🚀 Science Fiction</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 📝 Biographies -->
+    <section class="section genre-section" id="biographies">
+      <h2 class="section-title">📝 Biographies</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 💖 Romance -->
+    <section class="section genre-section" id="romance">
+      <h2 class="section-title">💖 Romance</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 🧸 Children's -->
+    <section class="section genre-section" id="childrens">
+      <h2 class="section-title">🧸 Children's</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 📜 History -->
+    <section class="section genre-section" id="history">
+      <h2 class="section-title">📜 History</h2>
+      <div class="book-grid"></div>
+    </section>
+
+    <!-- 🙏 Religion -->
+    <section class="section genre-section" id="religion">
+      <h2 class="section-title">🙏 Religion</h2>
+      <div class="book-grid"></div>
+    </section>
+  </main>
+
+  <!-- load dynamic script -->
+  <script src="home.js"></script>
+</body>
+</html>
